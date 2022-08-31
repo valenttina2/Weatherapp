@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Приложение прогноза погоды</title>
+    <title>Прогноз погоды</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">Приложение прогноза погоды</span>
+        <span class="fs-4">Прогноз погоды</span>
       </a>
 
       <ul class="nav nav-pills">
@@ -28,13 +28,23 @@
             <form action="">
                 <label for="city">Город</label>
                 <input type="text" id="city" class="form-controll" name="city" placeholder="Введите город">
-                <input type="submit" name="send" value="Узнать" class="btn btn-success">
+                <input type="submit" name="send" value="Узнать" class="mt-2 btn btn-success">
             </form>
         </div>
         <div class="col-4 offset-1">
-            <h1>Информация</h1>
-            <div class="alert alert-dander">
-                Погода в Минске
+            <h2>Информация</h2>
+            <div class="alert alert-success">
+                <div class="row">
+                    <div class="col-9">
+                        <b>Город: </b>{{info.city}}<br>
+                        <b>Температура: </b>{{info.temp}}<sup>0</sup><br>
+                        <b>Ветер: </b>{{info.wind}} м/с <br>
+                        <b>Видимость: </b>{{info.visibility}} м <br>
+                    </div>
+                    <div class="col-2 offset-1">
+                        <img src="http://openweathermap.org/img/w/{{info.icon}}.png" alt="Фото погоды" class="img-thunbnail">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
