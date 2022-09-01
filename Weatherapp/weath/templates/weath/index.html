@@ -25,14 +25,16 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-5 offset-1">
-            <form action="">
+            <form action="" method="post">
+                {% csrf_token %}
                 <label for="city">Город</label>
-                <input type="text" id="city" class="form-controll" name="city" placeholder="Введите город">
+                {{form.name}}
                 <input type="submit" name="send" value="Узнать" class="mt-2 btn btn-success">
             </form>
         </div>
         <div class="col-4 offset-1">
             <h2>Информация</h2>
+            {% for info in all_info %}
             <div class="alert alert-success">
                 <div class="row">
                     <div class="col-9">
@@ -46,6 +48,7 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>
