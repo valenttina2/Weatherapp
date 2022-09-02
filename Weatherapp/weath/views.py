@@ -10,15 +10,12 @@ def index(request):
     if(request.method =='POST'):
         form = CityForm(request.POST)
         form.save()
-
     form = CityForm()
 
-    cities=City.objects.all()
+    cities=City.objects.all().order_by('id')
     all_cities=[]
-
     for city in cities:
         res=requests.get(url.format(city.name)).json()
-
         city_info={
             'city':city.name,
             'temp':res["main"]["temp"],
@@ -26,7 +23,10 @@ def index(request):
             'icon':res["weather"][0]["icon"],
             'visibility':res["visibility"]
         }
+
         all_cities.append(city_info)
+        if len(all_cities)>3:
+            del all_cities[0:-3]
 
     context={'all_info':all_cities, 'form':form}
 
